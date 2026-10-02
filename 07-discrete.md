@@ -643,7 +643,7 @@ the same rational-function picture as in the Transfer functions chapter, with th
 
 Everything mirrors the continuous case:
 
-- **Equilibrium** — with $u[k] = 0$, a linear discrete system has the single equilibrium at the origin $\vec{x}_e = \vec{0}$; the equilibrium types are the same as for continuous systems.
+- **Equilibrium** — with $u[k] = 0$, the equilibria solve $(\mathbf{A} - \mathbf{I})\vec{x}_e = \vec{0}$: only the origin $\vec{x}_e = \vec{0}$ when $1$ is not an eigenvalue of $\mathbf{A}$, a whole subspace of them when it is. The equilibrium types are the same as for continuous systems.
 - **Stability** — the modes are $\lambda_i^k$, so the boundary is the **unit circle** in place of the imaginary axis.\footnote{For the exact (zero-order hold) discretization this verdict does not depend on the sampling period: the poles map as $z_i = e^{s_i T}$, so $|z_i| = e^{\operatorname{Re}(s_i)T} < 1$ iff $\operatorname{Re}(s_i) < 0$, for any $T > 0$; $T$ moves the poles but cannot flip them across the unit circle. Under Euler ($z_i = 1 + T s_i$) it is the opposite: a too-large $T$ can push even a stable pole outside the unit circle, which is why Euler needs a small $T$.} The three cases are the same, with $|\lambda_i|$ in place of $\operatorname{Re}\lambda_i$:
 
   ```{=latex}
@@ -652,7 +652,9 @@ Everything mirrors the continuous case:
   \setlength{\fboxsep}{1.2em}
   \fbox{$\displaystyle
   \begin{array}{lcl}
-  |\lambda_i| < 1 \ \ \forall i & \iff & \text{asymptotically stable}
+  |\lambda_i| < 1 \ \ \forall i & \iff & \text{asymptotically stable} \\[4pt]
+  |\lambda_i| \le 1 \ \ \forall i, \text{ some on the circle, all simple} & \Longrightarrow & \text{marginally stable} \\[4pt]
+  \text{some } |\lambda_i| > 1 & \Longrightarrow & \text{unstable}
   \end{array}
   $}
   \endgroup
