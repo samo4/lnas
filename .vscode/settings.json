@@ -3,6 +3,11 @@
     "editor.formatOnSave": false,
     "editor.defaultFormatter": null,
     "editor.codeActionsOnSave": {
+      // Prettier registers a `source.fixAll.prettier` action, which the global
+      // `"source.fixAll": "explicit"` would run on every save and rewrite
+      // *emphasis* to _emphasis_ (plus reflow `$$` blocks). Never run it here;
+      // `.prettierignore` is the second line of defence.
+      "source.fixAll.prettier": "never",
       "source.fixAll.markdownlint": "explicit"
     }
   },

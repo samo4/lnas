@@ -1,0 +1,3 @@
+# Prose in this repo is hand-wrapped and hand-emphasised.
+# Prettier rewrites `*emphasis*` to `_emphasis_`
+*.md
