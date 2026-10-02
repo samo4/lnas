@@ -49,6 +49,25 @@ No direct input coupling — $i_g$ and $v_g$ reach the inductor only through $v_
 
 $$\begin{bmatrix} \dot{i}_L \\ \dot{v}_C \end{bmatrix} = \begin{bmatrix} -\frac{R_2}{L} & \frac{1}{L} \\ -\frac{1}{C} & -\frac{1}{CR_3} \end{bmatrix}\begin{bmatrix} i_L \\ v_C \end{bmatrix} + \begin{bmatrix} 0 & 0 \\ \frac{1}{C} & \frac{1}{CR_3} \end{bmatrix}\begin{bmatrix} i_g \\ v_g \end{bmatrix}$$
 
+### Part b. (output equation)
+
+Both requested outputs are element voltages, so each is an algebraic combination of the states and the inputs, $\vec{y} = \mathbf{C}\vec{x} + \mathbf{D}\vec{u}$ with $\vec{x} = \tvec{i_L, v_C}$ and $\vec{u} = \tvec{i_g, v_g}$; no derivative may appear.
+
+- $v_{R_2}$: $R_2$ sits between $V_3$ and ground, with the marked polarity positive at the top, so $v_{R_2} = V_3 = R_2\,i_L$.
+- $v$: $R_3$ sits between $V_4$ and ground, and the floating source fixes $V_4 = V_2 - v_g = v_C - v_g$, so $v = V_4 = v_C - v_g$.
+
+Hence
+
+$$
+\begin{bmatrix} v_{R_2} \\ v \end{bmatrix} =
+\begin{bmatrix} R_2 & 0 \\ 0 & 1 \end{bmatrix}
+\begin{bmatrix} i_L \\ v_C \end{bmatrix} +
+\begin{bmatrix} 0 & 0 \\ 0 & -1 \end{bmatrix}
+\begin{bmatrix} i_g \\ v_g \end{bmatrix}.
+$$
+
+Sanity check: the only output that sees the source directly is $v$, through the $\mathbf{D}$ row $\rvec{0, -1}$, because the source sits between $V_2$ and $V_4$; and neither row contains a derivative.
+
 ## Problem 2 (2023-11-24 / 2)
 
 Partially elastic crash of an object to the wall is modeled with a spring and a damper as shown in the figure. Crash starts at $x=0$.
@@ -254,7 +273,7 @@ $$
 
 with $\mathbf{A} = \begin{bmatrix} -\frac{R_1}{L} & -\frac{1}{L} \\ \frac{1}{C} & 0 \end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix} \frac{1}{L} & \frac{R_1}{L} \\ 0 & -\frac{1}{C} \end{bmatrix}$. The top row is $\dot{i}_L$ (from Step 4), the bottom row is $\dot{v}_C$ (from Step 3).
 
-### Problem 4a (2021-01-26 / 1)
+## Problem 4a (2021-01-26 / 1)
 
 What happens if you ground the wrong rail? In the circuit below the bottom rail is grounded, so the voltage source $v_g$ floats between two non-ground nodes. Find the state-space equations in the form $\dot{\vec{x}} = \mathbf{A}\vec{x} + \mathbf{B}u$, where $\vec{x} = \tvec{i_L, v_C}$ and $u = v_g$.
 
@@ -264,19 +283,65 @@ What happens if you ground the wrong rail? In the circuit below the bottom rail 
 ```
 
 
+**Step 1 — ground and nodes.** Ground the bottom rail: everything from $R_2$'s foot to the source branch is the reference node, so only the inductor $L$ separates it from the node $V_4$ on the left. Mark the remaining nodes: $V_1$ (the left terminal of the source, above $R_1$), $V_2$ (the right terminal, above $R_2$ and $R_3$), $V_3$ (between $R_3$ and $C$) and $V_4$ (between $R_1$ and $L$).
+
+Unlike the earlier examples the source floats, so its current $i_s$ is an extra unknown and we close the pair with the source constraint, in the drawn orientation (the same convention as in 4b, where the right terminal carries the $+$):
+
+$$V_2 - V_1 = v_g .$$
+
+**Step 2 — node equations** (currents leaving positive) and element relations. Let $i_s$ flow from $V_1$ through the source to $V_2$:
+
+$$\text{Node } V_4: \quad \frac{V_4 - V_1}{R_1} + i_L = 0 \;\Longrightarrow\; V_4 - V_1 = -R_1 i_L$$
+
+$$\text{Node } V_1: \quad \frac{V_1 - V_4}{R_1} + i_s = 0 \;\Longrightarrow\; i_s = \frac{V_4 - V_1}{R_1} = -i_L$$
+
+$$\text{Node } V_2: \quad \frac{V_2}{R_2} + \frac{V_2 - V_3}{R_3} - i_s = 0$$
+
+$$\text{Node } V_3: \quad \frac{V_3 - V_2}{R_3} + i_C = 0$$
+
+$$v_L = L\dot{i}_L = V_4, \qquad i_C = C\dot{v}_C, \qquad v_C = V_3 .$$
+
+Eliminating $i_s$ and $V_3$ from the node-$V_2$ equation leaves one relation between the states, the input and the remaining unknown $V_2$ (the supernode equation):
+
 $$
 i_L + \frac{V_2}{R_2} + \frac{V_2 - v_C}{R_3} = 0
 \quad\Longrightarrow\quad
 V_2 = \frac{R_2\,v_C - R_2R_3\,i_L}{R_2 + R_3}
 $$
 
-### Problem 4b (2021-01-26 / 1)
+**Step 3 — inductor.** $V_4 = V_1 - R_1 i_L = V_2 - v_g - R_1 i_L$, and substituting the relation above for $V_2$,
+
+$$
+L\dot{i}_L = V_4 = \frac{R_2}{R_2+R_3}v_C - \left(R_1 + \frac{R_2R_3}{R_2+R_3}\right)i_L - v_g .
+$$
+
+**Step 4 — capacitor.** $i_C = \dfrac{V_2 - V_3}{R_3} = \dfrac{V_2 - v_C}{R_3}$ with $V_2 - v_C = -\dfrac{R_3\,(R_2 i_L + v_C)}{R_2+R_3}$, so
+
+$$
+C\dot{v}_C = -\frac{R_2 i_L + v_C}{R_2+R_3}
+\qquad\Longrightarrow\qquad
+\dot{v}_C = -\frac{R_2\,i_L + v_C}{C(R_2+R_3)} .
+$$
+
+**Step 5 — matrix form.**
+
+$$
+\dot{\vec{x}} = \begin{bmatrix}
+-\frac{1}{L}\left(R_1 + \frac{R_2R_3}{R_2+R_3}\right) & \frac{R_2}{L(R_2+R_3)} \\[4pt]
+-\frac{R_2}{C(R_2+R_3)} & -\frac{1}{C(R_2+R_3)}
+\end{bmatrix}\vec{x}
++ \begin{bmatrix} -\frac{1}{L} \\ 0 \end{bmatrix} v_g .
+$$
+
+## Problem 4b (2021-01-26 / 1)
 
 The same circuit, now with the top rail grounded at the minus terminal of $v_g$. Again find $\dot{\vec{x}} = \mathbf{A}\vec{x} + \mathbf{B}u$ with $\vec{x} = \tvec{i_L, v_C}$ and $u = v_g$.
 
 ```{=latex}
 \input{tikz/exam-2021-wrong-ground-b.tex}
 ```
+
+**Step 1 — ground and nodes.** Ground the top rail at the source's minus terminal, so $R_1$'s top end is grounded. Mark $V_g$ (the source's plus terminal, where $R_2$ and $R_3$ meet), $V_2$ (between $R_3$ and $C$), $V_3$ (the bottom rail, where $L$, $R_2$ and $C$ meet) and $V_4$ (between $R_1$ and $L$). Because the source's minus terminal is grounded, $V_g = v_g$ and no node equation is needed at $V_g$: the source current never enters the equations.
 
 **Step 2** Node and element equations.
 
@@ -304,6 +369,18 @@ $$
 $$
 \dot{v}_C = -\frac{R_2\,i_L + v_C}{C(R_2+R_3)}
 $$
+
+**Step 3 — matrix form.** With $\vec{x} = \tvec{i_L, v_C}$ and $u = v_g$,
+
+$$
+\dot{\vec{x}} = \begin{bmatrix}
+-\frac{1}{L}\left(R_1 + \frac{R_2R_3}{R_2+R_3}\right) & \frac{R_2}{L(R_2+R_3)} \\[4pt]
+-\frac{R_2}{C(R_2+R_3)} & -\frac{1}{C(R_2+R_3)}
+\end{bmatrix}\vec{x}
++ \begin{bmatrix} -\frac{1}{L} \\ 0 \end{bmatrix} u .
+$$
+
+Grounding the other rail (4a) gives the same matrices: the two circuits differ only in which node is called ground, and $i_L$ and $v_C$ do not depend on that choice.
 
 ## Discrete
 

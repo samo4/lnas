@@ -126,7 +126,7 @@ $$
 
 $$m\ddot{x} + b\dot{x} + kx = 0, \qquad \dot{\vec{x}} = \begin{bmatrix} 0 & 1 \\ -\frac{k}{m} & -\frac{b}{m} \end{bmatrix}\vec{x}:$$
 
-the same state matrix, with the input removed. Here $x_1$ is how deep the car has penetrated and $x_2$ how fast it is still going, with the initial state $\vec{x}(0) = \tvec{0, v_0}$. The spring only stores the kinetic energy $\tfrac{1}{2}mv_0^2$; the damper turns it into heat, which is what cushions the crash. The model holds only while the car touches the buffer: once $x$ returns to $0$ the car separates from it, which our model cannot express.
+the same state matrix, with the input removed. Here $x_1$ is how deep the car has penetrated and $x_2$ how fast it is still going, with the initial state $\vec{x}(0) = \tvec{0, v_0}$. The spring stores part of the initial kinetic energy $\tfrac{1}{2}mv_0^2$ as elastic potential energy and gives it back; the damper turns the rest into heat. Together they cushion the crash. The model holds only while the car touches the buffer: once $x$ returns to $0$ the car separates from it, which our model cannot express.
 
 ```{=latex}
 \end{example}

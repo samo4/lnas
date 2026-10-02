@@ -182,7 +182,7 @@ $$\frac{\partial^2 w(t,x)}{\partial t^2} = c^2\,\frac{\partial^2 w(t,x)}{\partia
 - *Time-invariant* — the wave speed $c$ is constant, and no coefficient depends explicitly on $t$.
 - *Homogeneous* — no input term; the field moves only under its boundary and initial conditions.
 - *Distributed* — the unknown $w(t,x)$ depends on space as well as time, so the state is a field, not a finite vector $\vec{x}$: infinitely many states, no finite-dimensional model. Linear and time-invariant, but outside the LTI class of these notes.
-- Its only lumped approximation is a discretization of $x$ on a grid (the method of lines, as in finite elements).
+- One lumped approximation is a discretization of $x$ on a grid (the method of lines, as in finite elements).
 
 ```{=latex}
 \end{example}
