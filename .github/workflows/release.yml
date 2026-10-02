@@ -1,0 +1,38 @@
+name: Build book on release
+
+# Every pushed tag builds the whole book and attaches AS.pdf to a GitHub release of that tag.
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pandoc and TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pandoc \
+            texlive-xetex texlive-latex-recommended texlive-latex-extra \
+            texlive-pictures texlive-fonts-recommended lmodern
+
+      - name: Install just
+        uses: taiki-e/install-action@v2
+        with:
+          tool: just
+
+      - name: Build the book
+        run: just as
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: AS.pdf
+          fail_on_unmatched_files: true
