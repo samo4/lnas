@@ -627,10 +627,12 @@ $(\mathbf{A} - \lambda\mathbf{I})\vec{v} = \vec{0}$ says only $v_2 = 0$, so $\ve
 
 **Step 3 — generalized eigenvector**\
 The eigenvector equation gives no more solutions, so we square the matrix. $(\mathbf{A} - \lambda\mathbf{I})^2 = \mathbf{0}$, so $(\mathbf{A} - \lambda\mathbf{I})^2\vec{v} = \vec{0}$ holds for *every* $\vec{v}$. 
-Pick one that does not already solve $(\mathbf{A} - \lambda\mathbf{I})\vec{v} = \vec{0}$, i.e. any vector off the $x_1$ axis, e.g. $\vec{v}_2 = \tvec{1, 1}$.
+Pick one that does not already solve $(\mathbf{A} - \lambda\mathbf{I})\vec{v} = \vec{0}$, i.e. any vector off the $x_1$ axis, e.g. $\vec{v}_2 = \tvec{0, 1}$.
 
 **Step 4 — chain**\
 $(\mathbf{A} - \lambda\mathbf{I})\vec{v}_2 = \tvec{1, 0} = \vec{v}_1$. One application lands on the eigenvector, a second one gives $\vec{0}$. The two vectors are linked, which is what the Jordan form will build on.
+
+Rearranged, the chain reads $\mathbf{A}\vec{v}_2 = \lambda\vec{v}_2 + \vec{v}_1$, and it is already drawn in the right panel of the multiplicity figure: the input $\tvec{0, 1}$ goes to $\tvec{1, 2} = 2\vec{v}_2 + \vec{v}_1$. A generalized eigenvector is scaled by $\lambda$ like an eigenvector, plus pushed along $\vec{v}_1$. That push is the superdiagonal $1$.
 
 ```{=latex}
 \end{example}
@@ -698,7 +700,7 @@ Only $\vec{v}_1$ is a true eigenvector. The others are generalized eigenvectors:
 3. Fill the remaining blocks of the same $\lambda$ with further chains (or plain eigenvectors for $1\times1$ blocks), independent of the ones you already have.
 4. Stack all chains into $\mathbf{T}$, each one starting with its eigenvector ($\vec{v}_1, \vec{v}_2, \dots$) so that $\vec{v}_1$ lands on the top-left of its block, in the order of the blocks in $\mathbf{J}$.
 
-Back to the example from Generalized eigenvectors: $\mathbf{T} = \begin{bmatrix} \vec{v}_1 & \vec{v}_2 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ gives $\mathbf{T}^{-1}\mathbf{A}\mathbf{T} = \begin{bmatrix} 2 & 1 \\ 0 & 2 \end{bmatrix} = \mathbf{J}_2(2)$. $\mathbf{A}$ is already a Jordan block, so $\mathbf{J} = \mathbf{A}$ is no surprise. The simplest choice $\vec{v}_2 = \tvec{0, 1}$ would even give $\mathbf{T} = \mathbf{I}$.
+Back to the example from Generalized eigenvectors: $\mathbf{T} = \begin{bmatrix} \vec{v}_1 & \vec{v}_2 \end{bmatrix} = \mathbf{I}$ gives $\mathbf{T}^{-1}\mathbf{A}\mathbf{T} = \begin{bmatrix} 2 & 1 \\ 0 & 2 \end{bmatrix} = \mathbf{J}_2(2)$. $\mathbf{A}$ is already a Jordan block, so $\mathbf{J} = \mathbf{A}$ is no surprise. Any other $\vec{v}_2$ off the $x_1$ axis works too: $\vec{v}_2 = \tvec{1, 1}$ also satisfies $(\mathbf{A} - 2\mathbf{I})\vec{v}_2 = \vec{v}_1$, and $\mathbf{T} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ gives the same $\mathbf{J}$.
 
 ```{=latex}
 \begin{example}[frametitle={Example - Jordan form end to end}]
