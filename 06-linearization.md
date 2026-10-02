@@ -145,7 +145,7 @@ $$
 \dot{S} = -\beta SI, \qquad \dot{I} = \beta SI - \gamma I, \qquad \dot{R} = \gamma I
 $$
 
-With $N$ fixed, only two of the three equations are independent. At the disease-free equilibrium $(N, 0, 0)$ the Jacobian has a single nonzero eigenvalue, $\beta N - \gamma$, so here linearization *is* decisive: the state is stable, and no outbreak occurs, exactly when
+With $N$ fixed, only two of the three equations are independent. At the disease-free equilibrium $(N, 0, 0)$ the Jacobian has the eigenvalues $0$ and $\beta N - \gamma$. The zero is no cause for concern: every disease-free state $(S, 0, N - S)$ is an equilibrium too, and the zero eigenvalue only points along that line of equilibria. What matters is the other one, the growth rate of a small infection, so a small outbreak dies out exactly when
 
 $$
 R_0 = \frac{\beta N}{\gamma} < 1.

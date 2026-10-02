@@ -168,7 +168,7 @@ F_d \approx
 \end{cases}
 $$
 
-The viscous law is linear and keeps the model LTI. The quadratic one is written with $|\dot{x}|$ so that drag still opposes the motion; it is nonlinear, but linearizing about the terminal velocity $v_t$ gives an exponential approach with $\tau = v_t/(2g)$. $C_d$ depends on shape: about $1.1$ for a flat plate or disc facing the flow, $0.3$ for a dome.
+The viscous law is linear and keeps the model LTI. The quadratic one is written with $|\dot{x}|$ so that drag still opposes the motion; it is nonlinear, but for a body falling under gravity, linearizing about the terminal velocity $v_t$ gives an exponential approach with $\tau = v_t/(2g)$. $C_d$ depends on shape: about $1.1$ for a flat plate or disc facing the flow, $0.3$ for a dome.
 
 ### Rotational systems
 

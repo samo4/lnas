@@ -56,7 +56,7 @@ $$
 Check: $98 + 2 = 100$, $98 - 2 = 96$. The two pieces have direct meaning:
 
 - $98[1\ 1]^{\mathsf T}$ — the **common part**: the mid-price $\frac{p_1+p_2}{2} = 98$;
-- $2[1\ -1]^{\mathsf T}$ — the **spread part**: half the gap $\frac{p_1-p_2}{2} = 2$, the arbitrage profit per coin.
+- $2[1\ -1]^{\mathsf T}$ — the **spread part**: half the gap $\frac{p_1-p_2}{2} = 2$, how far each price sits from the mid-price. (The arbitrage profit per coin is the full gap, $4$.)
 
 Each part evolves with its own eigenvalue, independently:
 
@@ -82,7 +82,7 @@ This is $\mathbf{A} = \mathbf{V}\boldsymbol{\Lambda}\mathbf{V}^{-1}$ with $\bold
 - The **equilibrium manifold** is still 1-dimensional: "no arbitrage" means $p_1 = \cdots = p_n$, the diagonal line $\operatorname{span}\{(1,\dots,1)\}$ with eigenvalue $0$.
 - The **spread space** is the $(n-1)$-dimensional hyperplane of zero-sum deviations $\{\vec{s} : \sum_i s_i = 0\}$, orthogonal to the diagonal. Every direction in it has a negative eigenvalue, so it collapses onto the equilibrium line.
 
-With all pairs coupled at rate $k$, the dynamics matrix is the graph Laplacian of the complete graph,
+With all pairs coupled at rate $k$, the dynamics matrix is $-k$ times the graph Laplacian $\mathbf{L} = n\mathbf{I} - \mathbf{J}$ of the complete graph,
 
 $$
 \mathbf{A} = k(\mathbf{J} - n\mathbf{I}), \qquad \mathbf{J} = \text{all-ones matrix}

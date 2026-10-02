@@ -695,7 +695,7 @@ Only $\vec{v}_1$ is a true eigenvector. The others are generalized eigenvectors:
 
 *Build the chain from the top.* Solving $(\mathbf{A} - \lambda\mathbf{I})\vec{v}_2 = \vec{v}_1$ bottom-up is awkward. The matrix is singular, and for a badly chosen eigenvector $\vec{v}_1$ the system has no solution at all. Going down avoids this:
 
-1. Pick $\vec{v}_k$ with $(\mathbf{A} - \lambda\mathbf{I})^{k}\vec{v}_k = \vec{0}$ but $(\mathbf{A} - \lambda\mathbf{I})^{k-1}\vec{v}_k \ne \vec{0}$. Usually any vector that does not solve $(\mathbf{A} - \lambda\mathbf{I})^{k-1}\vec{v} = \vec{0}$ does it.
+1. Pick $\vec{v}_k$ with $(\mathbf{A} - \lambda\mathbf{I})^{k}\vec{v}_k = \vec{0}$ but $(\mathbf{A} - \lambda\mathbf{I})^{k-1}\vec{v}_k \ne \vec{0}$. Any vector in $\ker(\mathbf{A} - \lambda\mathbf{I})^{k}$ that is not in $\ker(\mathbf{A} - \lambda\mathbf{I})^{k-1}$ does it. If $\lambda$ is the only eigenvalue, the first condition holds for every vector.
 2. Go down with $\vec{v}_{j-1} = (\mathbf{A} - \lambda\mathbf{I})\vec{v}_j$. Each step is a matrix–vector product, nothing to solve, and the last one lands on an eigenvector automatically.
 3. Fill the remaining blocks of the same $\lambda$ with further chains (or plain eigenvectors for $1\times1$ blocks), independent of the ones you already have.
 4. Stack all chains into $\mathbf{T}$, each one starting with its eigenvector ($\vec{v}_1, \vec{v}_2, \dots$) so that $\vec{v}_1$ lands on the top-left of its block, in the order of the blocks in $\mathbf{J}$.
@@ -784,7 +784,7 @@ $$
 
 This is why $\mathbf{J}$ is so useful. Functions pass through a similarity (the inner $\mathbf{T}^{-1}\mathbf{T}$ pairs cancel, see Similarity transformation), so $f(\mathbf{A}) = \mathbf{T}f(\mathbf{J})\mathbf{T}^{-1}$ needs $f$ only of the small blocks.
 
-For a general $\mathbf{A}$ the infinite series is impractical by hand, but the Cayley–Hamilton theorem\footnote{A. Cayley coined the name \emph{matrix}; W. R. Hamilton invented the quaternions, which, like matrices, do not commute.} reduces it to a finite sum.
+For a general $\mathbf{A}$ the infinite series is impractical by hand, but the Cayley–Hamilton theorem\footnote{J. J. Sylvester coined the name \emph{matrix} in 1850, and A. Cayley developed their algebra; W. R. Hamilton invented the quaternions, which, like matrices, do not commute.} reduces it to a finite sum.
 
 ### The Cayley–Hamilton theorem
 
