@@ -45,7 +45,7 @@ Whether trajectories actually end up at the equilibrium is what we investigate n
 
 Stability asks what the free response $\dot{\vec{x}} = \mathbf{A}\vec{x}$ does from an arbitrary initial state. The equilibrium $\vec{x}_e = \vec{0}$ is
 
-- *stable in the sense of Lyapunov* if every trajectory stays bounded,
+- *stable in the sense of Lyapunov* every finite initial state excites a bounded response,
 - *asymptotically stable* if, in addition, every trajectory converges to $\vec{0}$,
 - *marginally stable* if it is Lyapunov stable but not asymptotically stable: the states stay bounded, but not all of them decay,
 - *unstable* if some trajectory grows without bound.
