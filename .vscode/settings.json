@@ -1,0 +1,36 @@
+{
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": "explicit"
+    }
+  },
+  "files.associations": {
+    "justfile": "just"
+  },
+  "[just]": {
+    "editor.formatOnSave": false,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  "[plaintext]": {
+    "editor.formatOnSave": false
+  },
+  "runOnSave.commands": [
+    {
+      "globMatch": "AS.md",
+      "command": "cd \"$(git rev-parse --show-toplevel)\" && just as",
+      "runIn": "terminal",
+      "terminalReveal": "onError"
+    },
+    {
+      "globMatch": "*.md",
+      "notMatch": "[\\\\/]AS\\.md$",
+      "command": "cd \"$(git rev-parse --show-toplevel)\" && just ch \"${fileBasename}\"",
+      "runIn": "terminal",
+      "terminalReveal": "onError"
+    }
+  ]
+}
