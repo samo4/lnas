@@ -34,7 +34,7 @@ $$
 \dot{x}_n = f(x_1, x_2, \dots, x_n, u).
 $$
 
-In general, an $n$-th order ODE $y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_1\dot{y} + a_0 y = u$ becomes $n$ first-order equations by taking $x_1 = y$, $x_2 = \dot{y}$, $\dots$, $x_n = y^{(n-1)}$; the state matrix takes the companion form
+In general, an $n$-th order ODE $y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_1\dot{y} + a_0 y = u$ becomes $n$ first-order equations by taking $x_1 = y$, $x_2 = \dot{y}$, $\dots$, $x_n = y^{(n-1)}$; the state matrix takes the companion form (part of the *controllable canonical form*, which will be useful later)
 
 $$
 \begin{bmatrix}
