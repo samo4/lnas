@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install pandoc and TeX Live
         run: |
@@ -32,7 +32,7 @@ jobs:
         run: just as
 
       - name: Publish release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: AS.pdf
           fail_on_unmatched_files: true
