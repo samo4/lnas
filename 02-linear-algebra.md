@@ -70,13 +70,22 @@ In a city with a square street grid, the destination is 3 blocks east and 4 bloc
 
 *Dot product.* Multiply matching entries and add them up: $\vec{x}^T\vec{y}$. The result is a single number, not a vector. Geometrically, $\vec{x}^T\vec{y} = \lVert\vec{x}\rVert_2\,\lVert\vec{y}\rVert_2\cos\theta$, with $\theta$ the angle between the two arrows, so it measures how much they point the same way.
 
-*Orthonormal.* Two vectors are orthogonal when their dot product is zero. A vector is *normal* (normalized) when it has unit length, $\vec{q}^T\vec{q} = 1$.\footnote{Order matters. Multiplying a transposed vector by a vector, $\vec{q}^T\vec{q}$, gives the inner product, a single number. The other order, $\vec{q}\vec{q}^T$, gives a matrix. Strictly, dot product and inner product are not the same thing.} Why is this useful? Stack the basis as columns of $\mathbf{Q}$. Entry $(i,j)$ of $\mathbf{Q}^T\mathbf{Q}$ is $\vec{q}_i^T\vec{q}_j$, so the conditions above say $\mathbf{Q}^T\mathbf{Q} = \mathbf{I}$, and the inverse is the transpose:
+*Inner product.* The dot product is the real case of the inner product, written as the signal processing people do it:
 
 $$
-\mathbf{Q}^{-1} = \mathbf{Q}^T, \qquad \tilde{\vec{x}} = \mathbf{Q}^T\vec{x}, \qquad \tilde{x}_i = \vec{q}_i^T\vec{x}
+\langle \vec{x}, \vec{y} \rangle = \sum_i x_i\, y_i^* = \vec{y}^H\vec{x}, \qquad
+\langle x, y \rangle = \int x(t)\, y^*(t)\, dt
 $$
 
-Each coordinate is the projection of $\vec{x}$ on one basis vector. In a general basis $\mathbf{T}$ the coordinates are coupled and you have to solve $\mathbf{T}\tilde{\vec{x}} = \vec{x}$. Lengths and angles are also preserved. Such $\mathbf{Q}$ are rotations and reflections: they move the grid but never stretch it.
+with $^H$ the conjugate transpose. For real vectors the conjugate does nothing and $\langle \vec{x}, \vec{y} \rangle = \vec{x}^T\vec{y}$. It is there for complex vectors, which we will meet as eigenvectors: it keeps $\langle \vec{x}, \vec{x} \rangle = \lVert\vec{x}\rVert_2^2$ real and nonnegative. The second formula is the same operation for signals, with the sum over the index replaced by an integral over time. A signal is a vector with a continuum of entries, and everything below about lengths, angles and projections carries over to it.
+
+*Orthonormal.* Two vectors are orthogonal when their inner product is zero, $\langle \vec{x}, \vec{y} \rangle = 0$. A vector is *normal* (normalized) when it has unit length, $\langle \vec{q}, \vec{q} \rangle = \vec{q}^T\vec{q} = 1$.\footnote{Order matters. Multiplying a transposed vector by a vector, $\vec{q}^T\vec{q}$, gives a single number. The other order, $\vec{q}\vec{q}^T$, gives a matrix, the outer product.} Why is this useful? Stack the basis as columns of $\mathbf{Q}$. Entry $(i,j)$ of $\mathbf{Q}^T\mathbf{Q}$ is $\vec{q}_i^T\vec{q}_j$, so the conditions above say $\mathbf{Q}^T\mathbf{Q} = \mathbf{I}$, and the inverse is the transpose:
+
+$$
+\mathbf{Q}^{-1} = \mathbf{Q}^T, \qquad \tilde{\vec{x}} = \mathbf{Q}^T\vec{x}, \qquad \tilde{x}_i = \vec{q}_i^T\vec{x} = \langle \vec{x}, \vec{q}_i \rangle
+$$
+
+Each coordinate is the projection of $\vec{x}$ on one basis vector. This is how Signals computes Fourier coefficients: the harmonics $e^{jk\omega_0 t}$ are orthogonal over one period $T$, and $c_k = \frac{1}{T}\langle x, e^{jk\omega_0 t} \rangle$ is the projection on the $k$-th one. The $\frac{1}{T}$ is $1/\langle e^{jk\omega_0 t}, e^{jk\omega_0 t} \rangle$, the price of a basis that is orthogonal but not normalized. In a general basis $\mathbf{T}$ the coordinates are coupled and you have to solve $\mathbf{T}\tilde{\vec{x}} = \vec{x}$. Lengths and angles are also preserved. Such $\mathbf{Q}$ are rotations and reflections: they move the grid but never stretch it.
 
 ```{=latex}
 \begin{example}[frametitle={Example - coordinates in a rotated grid}]

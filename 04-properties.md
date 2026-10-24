@@ -10,6 +10,14 @@ $$
 
 each called a **mode** of the system; the eigenvalues of $\mathbf{A}$ set the modes. A real $\lambda$ gives a growing or decaying exponential (or a constant for $\lambda = 0$); a conjugate pair $\sigma \pm j\omega$ gives an oscillation with envelope $e^{\sigma t}$.
 
+How much of each mode the response contains is read off the rows of $\mathbf{V}^{-1}$. They are the *left eigenvectors*, $\vec{w}_i^H\mathbf{A} = \lambda_i\vec{w}_i^H$, and $\mathbf{V}^{-1}\mathbf{V} = \mathbf{I}$ read entry by entry says $\langle \vec{v}_j, \vec{w}_i \rangle = \vec{w}_i^H\vec{v}_j = \delta_{ij}$. Writing $e^{\mathbf{A}t}\vec{x}_0 = \mathbf{V}e^{\boldsymbol{\Lambda}t}\mathbf{V}^{-1}\vec{x}_0$ column by column,
+
+$$
+\vec{x}(t) = \sum_{i=1}^n e^{\lambda_i t}\, \langle \vec{x}_0, \vec{w}_i \rangle\, \vec{v}_i
+$$
+
+Project the initial state on $\vec{w}_i$ to get the amount of mode $i$, let it evolve as $e^{\lambda_i t}$, and place it along $\vec{v}_i$. This is a Fourier series with one twist. The eigenvectors are generally not orthogonal, so the coefficients are not $\langle \vec{x}_0, \vec{v}_i \rangle$ but come from the dual set $\vec{w}_i$. For a symmetric $\mathbf{A}$ the eigenvectors can be chosen orthonormal, $\vec{w}_i = \vec{v}_i$, and it is exactly the orthonormal expansion of the Linear algebra chapter.
+
 The exception is a defective $\mathbf{A}$: when a repeated eigenvalue has fewer independent eigenvectors than its multiplicity, it brings a factor $t$ instead of a second independent exponential, so $n$ eigenvalues need not give $n$ modes. The Jordan form says which. The block sizes tell you in advance which terms the free response can contain: a $k\times k$ Jordan block at $\lambda$ contributes $e^{\lambda t}, t e^{\lambda t}, \dots, t^{k-1}e^{\lambda t}$ (see $\Phi$ via the Jordan form in the State-space chapter). This is the state-space version of a repeated pole in partial fractions.
 
 These eigenvalues are also the **poles** of the transfer function $G(s) = \mathbf{C}(s\mathbf{I}-\mathbf{A})^{-1}\mathbf{B} + \mathbf{D}$ (which we get to properly in the transfer-function chapter): its denominator is $\det(s\mathbf{I}-\mathbf{A})$, so the poles are the eigenvalues of $\mathbf{A}$, at least for a minimal realization (controllable and observable, both defined below). An uncontrollable or unobservable mode cancels out of $G(s)$; its eigenvalue is not a pole unless another, controllable and observable, mode shares it.
@@ -337,7 +345,7 @@ $$
 
 the $(s+1)$ is gone: the state does carry the mode $e^{-t}$, but the zero at $s = -1$ in the $x_1 \to y$ map cancels it, and the input–output transfer function is one order lower than the system.
 
-Where the mode is hidden: $\lambda = -1$ has eigenvector $\vec{v} = \tvec{-1,1,-1}$ (check: $\mathbf{A}\vec{v} = -\vec{v}$), and $\mathbf{C}\vec{v} = -4+5-1 = 0$. The sensor never sees it, since $\mathbf{C}\mathbf{A}^k\vec{v} = (-1)^k\mathbf{C}\vec{v} = \vec{0}$, which is $\mathcal{O}\vec{v} = \vec{0}$: the rank drops by one. The combination of states that tracks this mode comes from the left eigenvector, $\vec{w}^T\mathbf{A} = -\vec{w}^T$ with $\vec{w} = \tvec{6, 5, 1}$: the modal coordinate $z = 6x_1 + 5x_2 + x_3$ obeys $\dot{z} = -z$ and decays as $e^{-t}$ unseen. The cancelled $(s+1)$ is that blindness, read in the frequency domain.
+Where the mode is hidden: $\lambda = -1$ has eigenvector $\vec{v} = \tvec{-1,1,-1}$ (check: $\mathbf{A}\vec{v} = -\vec{v}$), and $\mathbf{C}\vec{v} = -4+5-1 = 0$. The sensor never sees it, since $\mathbf{C}\mathbf{A}^k\vec{v} = (-1)^k\mathbf{C}\vec{v} = \vec{0}$, which is $\mathcal{O}\vec{v} = \vec{0}$: the rank drops by one. The combination of states that tracks this mode comes from the left eigenvector, $\vec{w}^T\mathbf{A} = -\vec{w}^T$ with $\vec{w} = \tvec{6, 5, 1}$: the modal coordinate $z = \langle \vec{x}, \vec{w} \rangle = 6x_1 + 5x_2 + x_3$ obeys $\dot{z} = -z$ and decays as $e^{-t}$ unseen. The cancelled $(s+1)$ is that blindness, read in the frequency domain.
 
 ```{=latex}
 \end{example}

@@ -16,6 +16,14 @@ and $G(s)$ is what we call the transfer function. Interconnections of systems be
 
 The Fourier transform gives the frequency response $G(j\omega)$, which has the most direct meaning: a sinusoid of frequency $\omega$ comes out as a sinusoid of the same frequency, scaled by $|G(j\omega)|$ and shifted by $\angle G(j\omega)$. This is how we think about signals as spectra and systems as filters, and it can be measured directly. Its limitation is convergence. As an ordinary integral, Fourier converges only for signals that decay, which rules out steps, ramps and unstable systems. Laplace adds a decaying factor $e^{-\sigma t}$ with $s = \sigma + j\omega$ and so handles all of them. Fourier is the special case $\sigma = 0$: where both converge, $G(j\omega)$ is $G(s)$ on the imaginary axis. The Z-transform does the same job for sampled signals and gives $G(z)$ (see Discrete systems). This chapter uses Laplace.
 
+Why exponentials, of all signals? Feed $u(t) = e^{st}$ into a causal system, applied since $t = -\infty$ so that no transient is left:
+
+$$
+y(t) = \int_0^\infty h(\tau)\, e^{s(t-\tau)}\, d\tau = \underbrace{\int_0^\infty h(\tau)\, e^{-s\tau}\, d\tau}_{G(s)}\; e^{st}
+$$
+
+The exponential comes out unchanged except for the factor $G(s)$. It is an *eigenfunction* of every LTI system, and $G(s)$ is its eigenvalue: $\mathbf{A}\vec{v} = \lambda\vec{v}$ one level up, with the system in place of $\mathbf{A}$ and signals in place of vectors. The transform is then a change of basis. Signals expands the input in exponentials, with Fourier coordinates $U(j\omega) = \langle u, e^{j\omega t} \rangle$. In that basis the system is diagonal: every coordinate is only multiplied by its own eigenvalue, $Y = G\,U$, just as diagonalization split the state into modes that evolve on their own (see Modes of an LTI system).
+
 ## Scalar transfer function
 
 In practice $G(s)$ is rarely found by transforming $h(t)$; it comes directly from the system's ODE. For a constant-coefficient ODE $a_n y^{(n)} + \cdots + a_0 y = b_m u^{(m)} + \cdots + b_0 u$, Laplace-transform with zero initial conditions. This is the Laplace $\leftrightarrow$ time connection: differentiation in time becomes multiplication by $s$, so the ODE turns into an algebraic equation,
