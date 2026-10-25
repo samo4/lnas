@@ -3,7 +3,7 @@
 Lecture notes on analysis of linear systems, written in pandoc Markdown and built with `just as` (all chapters, into `AS.pdf`) or `just ch FILE` (one chapter). The chapters are listed in the `justfile`; `AS.md` holds the title page and the *About this* preface.
 
 - Keep every note, decision and preference in this repository, in this file. The user works on several computers, so do not use Claude's local memory directory.
-- Cite in IEEE style (`ieee.csl`, set in the `justfile`), but always narratively: the author's name is part of the sentence, "Ogata [1] shows…", never a bare "[1]" standing in for a name. The names carry meaning (Chen's notation, Kalman's state space), and a reader should see who said what without looking at the reference list. In pandoc, write the name yourself and cite in brackets: `Ogata [@ogata2002modern]`, `Lay et al. [@lay2015linear]`. A bare `@key` renders as just "[1]" in a numeric style. Keys are in `references.bib`.
+- Cite in IEEE style (`ieee.csl`, set in the `justfile`), but narratively when talking about important well-known author: the author's name is part of the sentence, "Ogata [1] shows…". In pandoc, write the name yourself and cite in brackets: `Ogata [@ogata2002modern]`, `Lay et al. [@lay2015linear]`. A bare `@key` renders as just "[1]" in a numeric style. Keys are in `references.bib`.
 - TikZ figures live in `tikz/`.
 - Style. The test for every rhetorical device: does it carry content a student needs?
   - Remove punchlines and closing aphorisms ("Same geometry, different ruler.", "a statement about shape alone").
