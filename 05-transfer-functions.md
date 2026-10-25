@@ -22,7 +22,7 @@ $$
 y(t) = \int_0^\infty h(\tau)\, e^{s(t-\tau)}\, d\tau = \underbrace{\int_0^\infty h(\tau)\, e^{-s\tau}\, d\tau}_{G(s)}\; e^{st}
 $$
 
-The exponential comes out unchanged except for the factor $G(s)$. It is an *eigenfunction* of every LTI system, and $G(s)$ is its eigenvalue: $\mathbf{A}\vec{v} = \lambda\vec{v}$ one level up, with the system in place of $\mathbf{A}$ and signals in place of vectors. The transform is then a change of basis. Signals expands the input in exponentials, with Fourier coordinates $U(j\omega) = \langle u, e^{j\omega t} \rangle$. In that basis the system is diagonal: every coordinate is only multiplied by its own eigenvalue, $Y = G\,U$, just as diagonalization split the state into modes that evolve on their own (see Modes of an LTI system).
+The exponential comes out unchanged except for the factor $G(s)$. It is an *eigenfunction* of every LTI system, and $G(s)$ is its eigenvalue: $\mathbf{A}\vec{v} = \lambda\vec{v}$ one level up, with the system in place of $\mathbf{A}$ and signals in place of vectors. The transform is then a change of basis. Texts on signals expand the input in exponentials, with Fourier coordinates $U(j\omega) = \langle u, e^{j\omega t} \rangle$. In that basis the system is diagonal: every coordinate is only multiplied by its own eigenvalue, $Y = G\,U$, just as diagonalization split the state into modes that evolve on their own (see Modes of an LTI system).
 
 ## Scalar transfer function
 
