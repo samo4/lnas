@@ -1,6 +1,6 @@
 # Linear algebra
 
-This chapter collects the linear algebra used throughout the rest of the notes. It mostly follows chapter 3 of @chen1999linear. Chen writes $\mathbf{Q}$ for any basis matrix; here $\mathbf{T}$ is a general basis and $\mathbf{Q}$ an orthonormal one. Another source is the lecture series @abbott2012linear.
+This chapter collects the linear algebra used throughout the rest of the notes. It mostly follows chapter 3 of Chen [@chen1999linear]. Chen writes $\mathbf{Q}$ for any basis matrix; here $\mathbf{T}$ is a general basis and $\mathbf{Q}$ an orthonormal one. Another source is the lecture series by Abbott [@abbott2012linear].
 
 ## Matrix multiplication
 
@@ -327,7 +327,7 @@ If $\mathbf{A}$ is triangular (lower or upper), the determinant is the product o
 \end{example}
 ```
 
-Geometrically, each eigenspace is a subspace through the origin, and on it $\mathbf{A}$ acts as plain scaling by $\lambda$. Take a matrix with eigenvalues $\lambda = 7$ and $\lambda = -4$ [@lay2015linear]. Solving $(\mathbf{A} - 7\mathbf{I})\vec{x} = \vec{0}$ gives $x_1 = x_2$, and $(\mathbf{A} + 4\mathbf{I})\vec{x} = \vec{0}$ gives $5x_1 + 6x_2 = 0$, so
+Geometrically, each eigenspace is a subspace through the origin, and on it $\mathbf{A}$ acts as plain scaling by $\lambda$. Take a matrix from Lay et al. [@lay2015linear] with eigenvalues $\lambda = 7$ and $\lambda = -4$. Solving $(\mathbf{A} - 7\mathbf{I})\vec{x} = \vec{0}$ gives $x_1 = x_2$, and $(\mathbf{A} + 4\mathbf{I})\vec{x} = \vec{0}$ gives $5x_1 + 6x_2 = 0$, so
 
 $$
 E_7 = \operatorname{span}\left\{\begin{bmatrix} 1 \\ 1 \end{bmatrix}\right\},

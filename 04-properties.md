@@ -165,7 +165,7 @@ A system is *controllable* if, for any initial state $\vec{x}_0$ and any target 
 
 Controllability is a practical requirement. Take a car with no throttle: it may drift somewhere, but you can never place it where you want. The input reaches the state only through $\mathbf{B}$, and without a throttle that path is missing. Not every uncontrollable state matters, though: while you park, the engine speed may do as it likes, as long as the position is under control.
 
-Following @ogata2002modern, the reachable states follow from the state response: with $\vec{x}(0) = \vec{0}$, reaching $\vec{x}(t)$ at time $t$ requires
+Following Ogata [@ogata2002modern], the reachable states follow from the state response: with $\vec{x}(0) = \vec{0}$, reaching $\vec{x}(t)$ at time $t$ requires
 
 $$
 \vec{x}(t) = \int_0^t e^{\mathbf{A}(t-\tau)}\mathbf{B}\vec{u}(\tau)\, d\tau
@@ -231,7 +231,7 @@ so $\operatorname{rank}\mathcal{C} = 2 < n$ and the system is not controllable. 
 \end{example}
 ```
 
-*Beyond diagonal: Jordan coordinates.* The same reading works for any $\mathbf{A}$ once it is brought to Jordan form, where controllability can be read off the transformed $\mathbf{B}$ (Gilbert's criterion). A useful consequence: if one eigenvalue has two or more Jordan blocks ($m_g \ge 2$), a single input cannot control the system, whatever $\mathbf{B}$ is. The input has to reach independent modes that share one $\lambda$, and they respond identically to it. In general, a system with $m$ inputs needs $m \ge \max_i m_{g,i}$. For actual testing, use the rank test above.^[For the Jordan-form tests in full, see @chen1999linear.]
+*Beyond diagonal: Jordan coordinates.* The same reading works for any $\mathbf{A}$ once it is brought to Jordan form, where controllability can be read off the transformed $\mathbf{B}$ (Gilbert's criterion). A useful consequence: if one eigenvalue has two or more Jordan blocks ($m_g \ge 2$), a single input cannot control the system, whatever $\mathbf{B}$ is. The input has to reach independent modes that share one $\lambda$, and they respond identically to it. In general, a system with $m$ inputs needs $m \ge \max_i m_{g,i}$. For actual testing, use the rank test above.^[For the Jordan-form tests in full, see Chen [@chen1999linear].]
 
 Controllability as defined here is a yes-or-no question. In practice you may also care how hard it is to reach a particular state.
 
@@ -243,7 +243,7 @@ A system is **observable** if the initial state $\vec{x}(t_0)$ can be reconstruc
 
 In the car example from the previous section, the sensors are $\mathbf{C}$: what never reaches them can never be reconstructed, so observability involves only $\mathbf{A}$ and $\mathbf{C}$.
 
-Following @ogata2002modern again, start this time from the output equation. The state is what we cannot see, the output what we can:
+Following Ogata [@ogata2002modern] again, start this time from the output equation. The state is what we cannot see, the output what we can:
 
 $$
 \underbrace{\vec{y}(t)}_{\text{measured}} = \mathbf{C}\underbrace{\vec{x}(t)}_{\text{hidden}} + \mathbf{D}\vec{u}(t)

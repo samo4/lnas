@@ -56,7 +56,7 @@ Sanity check: with the states chosen as $y$ and $\dot{y}$, the last row of $\mat
 \end{example}
 ```
 
-The idea is Kalman's: recasting a linear system as matrices acting on a state vector is what he did in 1960 [@kalman1960general], the year usually called the birth of modern system theory [@bernhard2019kalman].
+The idea is Kalman's: recasting a linear system as matrices acting on a state vector is what he did in 1960 [@kalman1960general], the year Bernhard and Deschamps [@bernhard2019kalman] call the birth of modern system theory.
 
 The state variables are not unique. Reordering variables changes nothing but the row order. The interesting case is swapping one physical quantity for another.
 
@@ -1219,7 +1219,7 @@ In practice the choice depends on $\mathbf{A}$ and on the problem. Cayley–Hami
 - You want a closed form without computing $\mathbf{V}^{-1}$: CH never inverts a matrix, it only multiplies powers of $\mathbf{A}$.
 - You work with *symbolic parameters*: eigenvectors become rational expressions in the parameters, while CH's coefficients stay simpler.
 
-In short: **Cayley–Hamilton to compute, diagonalization (and its Jordan extension) to understand.**^[In the spirit of Hamming's motto, "The purpose of computing is insight, not numbers" [@hamming1962numerical]. For many more ways to compute $e^{\mathbf{A}t}$, and why most of them are numerically dubious, see @moler2003nineteen.]
+In short: **Cayley–Hamilton to compute, diagonalization (and its Jordan extension) to understand.**^[In the spirit of Hamming's motto, "The purpose of computing is insight, not numbers" [@hamming1962numerical]. For many more ways to compute $e^{\mathbf{A}t}$, and why most of them are numerically dubious, see Moler and Van Loan [@moler2003nineteen].]
 
 ```{=latex}
 \begin{example}[frametitle={Example - diagonalization and Cayley–Hamilton on the same matrix}]
