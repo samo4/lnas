@@ -19,7 +19,7 @@ This is material you have met before; it is here only as a reminder and to fix t
 - Element — the smallest part we do not split further. An ideal element is *lumped* and dimensionless: one relation between the quantities at its terminals.
 - Signal — a variable carrying information. The input $u(t)$ and the output $y(t)$ are what crosses the border; the state $\vec{x}(t)$ is the internal signal that remembers the past. A water tank: inflow rate, outflow rate, and level.
 - Test signals — the unit step $1(t)$ (Heaviside), equal to $1$ for $t \ge 0$ and $0$ before, switches an input on. The unit impulse $\delta(t)$ (Dirac) is zero everywhere except at $t = 0$ and has unit area, $\int \delta(t)\,dt = 1$. It picks out a value, $\int f(t)\,\delta(t - \tau)\,dt = f(\tau)$ (the sifting property), and it is the derivative of the step.
-- Direction of travel — *analysis* goes from system to behaviour; *synthesis* goes from desired behaviour to a system. Neither works without a model, and you cannot design what you cannot analyze.
+- Direction of travel — *analysis* goes from system to behaviour; *synthesis* goes from desired behaviour to a system. Neither works without a model.
 
 ## Classification of systems
 
@@ -115,8 +115,6 @@ The justification is not that the world is LTI, but that a system can often be m
 
 Linearization does not help with the other two assumptions: the model must be lumped (finitely many states and an ODE: no partial differential equations, no delays) and deterministic (no noise). And even where linearization does apply, it erases phenomena no linear model can recover: multiple equilibria, hysteresis, saturation, chaos.
 
-Two kinds of systems fall outside.
-
 ## What LTI leaves out
 
 ### Distributed systems
@@ -139,7 +137,7 @@ When you add randomness, the same initial state and input no longer give the sam
 
 Thermal agitation of the electrons in a resistor puts a random voltage across it (Johnson–Nyquist noise), with zero mean and a flat spectrum $S_v = 4 k_B T R$. The RC low-pass filter is the textbook LTI system, with one capacitor and one state, yet its output cannot be predicted, only described statistically.
 
-The dynamics are LTI, but the *input* is random. Two identical experiments give different traces, though nothing about the circuit changed. The toolbox predicts trajectories; here only the statistics are predictable.
+The dynamics are LTI, but the *input* is random. Two identical experiments give different traces, though nothing about the circuit changed.
 
 ```{=latex}
 \end{example}
@@ -218,7 +216,7 @@ It passes both tests, so the integrator is LTI.
 
 The drum fails because it is distributed, stochastic systems because they are random; either way there is no finite deterministic model that predicts trajectories, and both stay outside the toolbox of these notes. Everything that follows is about LTI systems in the strict sense defined above: lumped and deterministic as well as linear and time-invariant.
 
-Together, linearity and time invariance give far more than either does alone. Any input can be split into delayed, scaled copies of one elementary test signal: linearity makes the responses add, and time invariance makes every copy respond identically. So one experiment is enough: measure the response to a single short kick, the *impulse response*, and the response to any other input follows by superposition. The whole input–output behaviour is fixed by that one measurement.
+Together, linearity and time invariance give far more than either does alone. Any input can be split into delayed, scaled copies of one elementary test signal: linearity makes the responses add, and time invariance makes every copy respond identically. So one experiment is enough: measure the response to a single short kick, the *impulse response*, and the response to any other input follows by superposition.
 
 ### What if $a$ is $\mathbf{A}$?
 

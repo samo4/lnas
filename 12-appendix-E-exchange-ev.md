@@ -53,7 +53,7 @@ $$
 \vec{x} = \begin{bmatrix}100\\96\end{bmatrix} = 98\begin{bmatrix}1\\1\end{bmatrix} + 2\begin{bmatrix}1\\-1\end{bmatrix}
 $$
 
-Check: $98 + 2 = 100$, $98 - 2 = 96$. The two pieces have direct meaning:
+Check: $98 + 2 = 100$, $98 - 2 = 96$.
 
 - $98[1\ 1]^{\mathsf T}$ — the **common part**: the mid-price $\frac{p_1+p_2}{2} = 98$;
 - $2[1\ -1]^{\mathsf T}$ — the **spread part**: half the gap $\frac{p_1-p_2}{2} = 2$, how far each price sits from the mid-price. (The arbitrage profit per coin is the full gap, $4$.)
@@ -90,7 +90,7 @@ $$
 
 which reduces to the $2\times2$ $\mathbf{A}$ above for $n = 2$. Its spectrum: $\lambda_1 = 0$ (once, the all-ones direction) and $\lambda_2 = \cdots = \lambda_n = -kn$ (multiplicity $n-1$, the zero-sum eigenspace). More exchanges mean more arbitrage channels, so the spread decays faster.
 
-The equilibrium manifold is 1-dimensional per *independent common price level*. It becomes a genuine higher-dimensional surface only when several such factors exist — e.g. $m$ distinct coins across the $n$ exchanges give an $m$-dimensional manifold, since arbitrage cannot force BTC's level to equal ETH's. This is the essence of **cointegration** (VECM): the dimension of the $\lambda = 0$ eigenspace counts the common factors, and everything else must mean-revert. Arbitrage does not create dimensions; it removes them.
+The equilibrium manifold is 1-dimensional per *independent common price level*. It becomes a genuine higher-dimensional surface only when several such factors exist — e.g. $m$ distinct coins across the $n$ exchanges give an $m$-dimensional manifold, since arbitrage cannot force BTC's level to equal ETH's. This is the essence of **cointegration** (VECM): the dimension of the $\lambda = 0$ eigenspace counts the common factors, and everything else must mean-revert.
 
 The model is deliberately linear and input-free. Real fees, depth and latency make the arbitrage force nonlinear (linearization chapter), and external news acts as an input $\mathbf{B}\vec{u}$ that pushes the common level around, so the equilibrium line becomes a moving target the spread mode keeps chasing.
 

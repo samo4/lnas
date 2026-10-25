@@ -345,7 +345,7 @@ $$
 
 the $(s+1)$ is gone: the state does carry the mode $e^{-t}$, but the zero at $s = -1$ in the $x_1 \to y$ map cancels it, and the input–output transfer function is one order lower than the system.
 
-Where the mode is hidden: $\lambda = -1$ has eigenvector $\vec{v} = \tvec{-1,1,-1}$ (check: $\mathbf{A}\vec{v} = -\vec{v}$), and $\mathbf{C}\vec{v} = -4+5-1 = 0$. The sensor never sees it, since $\mathbf{C}\mathbf{A}^k\vec{v} = (-1)^k\mathbf{C}\vec{v} = \vec{0}$, which is $\mathcal{O}\vec{v} = \vec{0}$: the rank drops by one. The combination of states that tracks this mode comes from the left eigenvector, $\vec{w}^T\mathbf{A} = -\vec{w}^T$ with $\vec{w} = \tvec{6, 5, 1}$: the modal coordinate $z = \langle \vec{x}, \vec{w} \rangle = 6x_1 + 5x_2 + x_3$ obeys $\dot{z} = -z$ and decays as $e^{-t}$ unseen. The cancelled $(s+1)$ is that blindness, read in the frequency domain.
+Where the mode is hidden: $\lambda = -1$ has eigenvector $\vec{v} = \tvec{-1,1,-1}$ (check: $\mathbf{A}\vec{v} = -\vec{v}$), and $\mathbf{C}\vec{v} = -4+5-1 = 0$. The sensor never sees it, since $\mathbf{C}\mathbf{A}^k\vec{v} = (-1)^k\mathbf{C}\vec{v} = \vec{0}$, which is $\mathcal{O}\vec{v} = \vec{0}$: the rank drops by one. The combination of states that tracks this mode comes from the left eigenvector, $\vec{w}^T\mathbf{A} = -\vec{w}^T$ with $\vec{w} = \tvec{6, 5, 1}$: the modal coordinate $z = \langle \vec{x}, \vec{w} \rangle = 6x_1 + 5x_2 + x_3$ obeys $\dot{z} = -z$ and decays as $e^{-t}$ unseen.
 
 ```{=latex}
 \end{example}

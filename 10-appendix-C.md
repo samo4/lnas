@@ -147,7 +147,7 @@ Evaluate the stationary point against the impact instant:
 
 $$F(0) = 250\ \text{N}, \qquad F(\ln 4) = \frac{800}{3}\cdot\frac{1}{256} - \frac{50}{3}\cdot\frac{1}{4} = -\frac{25}{8}\ \text{N}$$
 
-The impact instant is the maximum (the stationary point is a minimum during the rebound), so $F_{\max} = 250$ N at $t=0$ — same conclusion, more work.
+The impact instant is the maximum (the stationary point is a minimum during the rebound), so $F_{\max} = 250$ N at $t=0$.
 
 ## Problem 3 (2024-11-22 / 1)
 

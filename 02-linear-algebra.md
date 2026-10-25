@@ -44,7 +44,7 @@ $$
 \vec{x} = \mathbf{T}\tilde{\vec{x}}, \qquad \tilde{\vec{x}} = \mathbf{T}^{-1}\vec{x}, \qquad \tilde{\mathbf{A}} = \mathbf{T}^{-1}\mathbf{A}\mathbf{T}
 $$
 
-Same vector, new description. ($\mathbf{T}^{-1}$ exists because the columns are independent; inverses are covered under linear algebraic equations.)
+($\mathbf{T}^{-1}$ exists because the columns are independent; inverses are covered under linear algebraic equations.)
 
 *Vector norms.* A norm $\lVert\vec{x}\rVert$ measures the length of a vector and must satisfy:
 
@@ -145,7 +145,7 @@ $$
 
 Only two rows, so every output lives in $\mathbb{R}^2$ and the rank can be at most $2$, however many columns there are. Columns 1 and 2 are already the two unit vectors $\vec{e}_1, \vec{e}_2$, so they reach every direction of the plane. Column 3 is column 1 $+$ column 2 and adds nothing. The range space is all of $\mathbb{R}^2$, and $\operatorname{rank}\mathbf{A} = 2$.
 
-So every $\vec{b}$ is reachable, e.g. $\mathbf{A}\vec{x} = \tvec{1, 2}$ with $\vec{x} = \tvec{1, 2, 0}$. With $n = 3$ columns and rank $2$, the nullity is $1$: the same dependency, read as $\text{col}_1 + \text{col}_2 - \text{col}_3 = \vec{0}$, gives $\ker\mathbf{A} = \operatorname{span}\{\tvec{1, 1, -1}\}$. So the solution is not unique: $\vec{x} = \tvec{1, 2, 0} + t\,\tvec{1, 1, -1}$ for any $t$. Three unknowns, two equations, one direction left free.
+So every $\vec{b}$ is reachable, e.g. $\mathbf{A}\vec{x} = \tvec{1, 2}$ with $\vec{x} = \tvec{1, 2, 0}$. With $n = 3$ columns and rank $2$, the nullity is $1$: the same dependency, read as $\text{col}_1 + \text{col}_2 - \text{col}_3 = \vec{0}$, gives $\ker\mathbf{A} = \operatorname{span}\{\tvec{1, 1, -1}\}$. So the solution is not unique: $\vec{x} = \tvec{1, 2, 0} + t\,\tvec{1, 1, -1}$ for any $t$.
 
 ```{=latex}
 \end{example}

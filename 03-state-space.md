@@ -1086,7 +1086,7 @@ The largest block is $2\times2$, so the highest power of $t$ is $t^1$, even thou
 \end{example}
 ```
 
-The Jordan blocks matter beyond $\Phi$. In LTI analysis you rarely need $\mathbf{T}$ itself, but the block sizes answer questions that the eigenvalues alone leave open; the later chapters point these out where they come up.
+In LTI analysis you rarely need $\mathbf{T}$ itself, but the block sizes answer questions that the eigenvalues alone leave open; the later chapters point these out where they come up.
 
 By hand, finding the chains is the laborious part. The Laplace method above and the Cayley–Hamilton method below both handle defective matrices with no eigenvectors at all.
 
@@ -1210,7 +1210,7 @@ Sanity check: $\Phi(0) = \mathbf{I}$, and differentiating at $t = 0$ ($\frac{d}{
 
 ### Choosing between the four methods
 
-We have shown four ways to skin a cat, but at the end you still have the same dead cat. The Taylor series is the most general and follows from first principles, but it is tedious. Diagonalization is elegant, and with its Jordan extension it shows how the system works: independent modes along the eigenvectors. Defective matrices make it laborious, though. The Laplace transform is a neat trick, but it needs symbolic algebra, which makes it hard to implement on a computer. Cayley–Hamilton is clever, but it is a black box: it gives $\Phi$, but no insight into the structure.
+The Taylor series is the most general and follows from first principles, but it is tedious. Diagonalization is elegant, and with its Jordan extension it shows how the system works: independent modes along the eigenvectors. Defective matrices make it laborious, though. The Laplace transform is a neat trick, but it needs symbolic algebra, which makes it hard to implement on a computer. Cayley–Hamilton is clever, but it is a black box: it gives $\Phi$, but no insight into the structure.
 
 In practice the choice depends on $\mathbf{A}$ and on the problem. Cayley–Hamilton (CH) comes back later as the basis of controllability and observability, and it is the best choice when:
 
